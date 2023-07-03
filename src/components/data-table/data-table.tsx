@@ -74,9 +74,14 @@ export function DataTable<TData, TValue>({
   // eslint-disable-next-line react-hooks/exhaustive-deps  
   }, [])
 
+  const statusess= [
+    "user",
+    "admin"
+  ]
+
   return (
     <div className="w-full space-y-4">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} statuses={statusess} />
       <div className="border rounded-md">
         <Table>
           <TableHeader>
