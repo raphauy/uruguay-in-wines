@@ -1,9 +1,8 @@
 import { Wine } from "@prisma/client";
-import { createWine, editWine, getWine } from "@/app/(server-side)/services/getWines";
 import { revalidatePath } from "next/cache";
 import { Separator } from "@/components/ui/separator";
 import { WineForm, WineFormValues } from "../add/wineForm";
-import { getClientById } from "@/app/(server-side)/services/getClients";
+import { editWine, getWine } from "@/services/getWines";
 
 
 export const revalidate= 0
@@ -18,9 +17,6 @@ interface Props{
   }  
 
 export default async function AddWinePage({ params, searchParams }: Props) {
-    const clientIdStr= params.slug
-    const client= await getClientById(parseInt(clientIdStr))
-    if (!client) return <div>Client not found, id: {clientIdStr}</div>
     
     const wineId= searchParams.wineId
     const wine= await getWine(wineId)
@@ -33,9 +29,7 @@ export default async function AddWinePage({ params, searchParams }: Props) {
 
     const edited= await editWine(wineId, data)    
 
-    //console.log(edited);
-    
-    revalidatePath("/admin")
+    revalidatePath("/admin/wines")
     
     return edited
     }
@@ -48,7 +42,7 @@ export default async function AddWinePage({ params, searchParams }: Props) {
         <Separator className="my-5" />
 
         <div className="w-full">
-            <WineForm slug={client.slug} processData={editData} wine={wine} />        
+            <WineForm processData={editData} wine={wine} />        
         </div>
         
         </div>
