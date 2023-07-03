@@ -31,7 +31,7 @@ export const columns: ColumnDef<Wine>[] = [
     accessorKey: "winery",
     header: ({ column }) => {
         return (
-          <Button variant="ghost"
+          <Button variant="ghost" className="pl-0 dark:text-white"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
             Winery
             <ArrowUpDown className="w-4 h-4 ml-1" />
@@ -43,7 +43,7 @@ export const columns: ColumnDef<Wine>[] = [
     accessorKey: "wine",
     header: ({ column }) => {
       return (
-        <Button variant="ghost"
+        <Button variant="ghost" className="pl-0 dark:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Wine
           <ArrowUpDown className="w-4 h-4 ml-1" />
@@ -55,7 +55,7 @@ export const columns: ColumnDef<Wine>[] = [
     accessorKey: "winemaker",
     header: ({ column }) => {
       return (
-        <Button variant="ghost"
+        <Button variant="ghost" className="pl-0 dark:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Winemaker
           <ArrowUpDown className="w-4 h-4 ml-1" />
@@ -67,7 +67,7 @@ export const columns: ColumnDef<Wine>[] = [
     accessorKey: "region",
     header: ({ column }) => {
       return (
-        <Button variant="ghost"
+        <Button variant="ghost" className="pl-0 dark:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Region
           <ArrowUpDown className="w-4 h-4 ml-1" />
@@ -79,7 +79,7 @@ export const columns: ColumnDef<Wine>[] = [
     accessorKey: "vintage",
     header: ({ column }) => {
       return (
-        <Button variant="ghost"
+        <Button variant="ghost" className="pl-0 dark:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Vintage
           <ArrowUpDown className="w-4 h-4 ml-1" />
@@ -91,7 +91,7 @@ export const columns: ColumnDef<Wine>[] = [
     accessorKey: "grapes",
     header: ({ column }) => {
       return (
-        <Button variant="ghost"
+        <Button variant="ghost" className="pl-0 dark:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Grapes
           <ArrowUpDown className="w-4 h-4 ml-1" />
@@ -103,7 +103,7 @@ export const columns: ColumnDef<Wine>[] = [
     accessorKey: "style",
     header: ({ column }) => {
       return (
-        <Button variant="ghost"
+        <Button variant="ghost" className="pl-0 dark:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Style
           <ArrowUpDown className="w-4 h-4 ml-1" />
@@ -118,7 +118,7 @@ export const columns: ColumnDef<Wine>[] = [
     accessorKey: "notes",
     header: ({ column }) => {
       return (
-        <Button variant="ghost"
+        <Button variant="ghost" className="pl-0 dark:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Notas
           <ArrowUpDown className="w-4 h-4 ml-1" />

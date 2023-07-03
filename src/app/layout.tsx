@@ -37,7 +37,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <div className="container relative flex flex-col min-h-screen text-muted-foreground">
                 <Navbar />
                 
-                <div className="flex flex-col items-center flex-1">
+                <div className="flex flex-col items-center flex-1 w-full dark:text-white">
                   {children}                
                   <Toaster />
                 </div>

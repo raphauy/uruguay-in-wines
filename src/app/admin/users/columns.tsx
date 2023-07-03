@@ -5,7 +5,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown, Edit, Trash2 } from "lucide-react"
 import Link from "next/link"
 
-export type Wine = {
+export type User = {
   id: string
   name: string | null
   email: string
@@ -13,12 +13,12 @@ export type Wine = {
   role: string
 }
 
-export const columns: ColumnDef<Wine>[] = [
+export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "name",
     header: ({ column }) => {
         return (
-          <Button variant="ghost"
+          <Button variant="ghost" className="dark:text-white"
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
             Name
             <ArrowUpDown className="w-4 h-4 ml-1" />
@@ -34,23 +34,19 @@ export const columns: ColumnDef<Wine>[] = [
     accessorKey: "email",
     header: ({ column }) => {
       return (
-        <Button variant="ghost"
+        <Button variant="ghost" className="pl-0 dark:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Email
           <ArrowUpDown className="w-4 h-4 ml-1" />
         </Button>
   )
     },
-    cell: ({ row }) => {
-      const data = row.original      
-      return (<p className="pl-3">{data.email}</p>)
-    },
   },
   {
     accessorKey: "role",
     header: ({ column }) => {
       return (
-        <Button variant="ghost"
+        <Button variant="ghost" className="pl-0 dark:text-white"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
           Role
           <ArrowUpDown className="w-4 h-4 ml-1" />
@@ -60,33 +56,22 @@ export const columns: ColumnDef<Wine>[] = [
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id))
     },
-    cell: ({ row }) => {
-      const data = row.original      
-      return (<p className="pl-3">{data.role}</p>)
-    },
   },
   {
     accessorKey: "emailVerified",
     header: ({ column }) => {
       return (
-        <div className="flex justify-center">
-          <Button variant="ghost" 
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-            Email Verified
-            <ArrowUpDown className="w-4 h-4 ml-1" />
-          </Button>
-        </div>
+        <Button variant="ghost" className="pl-0 dark:text-white"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+          Email Verified
+          <ArrowUpDown className="w-4 h-4 ml-1" />
+        </Button>
       )
     },
     cell: ({ row }) => {
       const data = row.original     
-      if (!data.emailVerified) return <div></div>
- 
-      return (
-        <div className="text-center">
-          {data.emailVerified.toDateString()}  
-        </div>
-      )
+      if (!data.emailVerified) return <div></div> 
+      return (<p>{data.emailVerified.toDateString()}  </p>)
     },
   },
   {
