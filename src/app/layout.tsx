@@ -15,8 +15,8 @@ import { Button } from '@/components/ui/button'
 
 
 export const metadata: Metadata = {
-  title: "Uruguay in Wines: Discover Uruguayan Wines with Gabi Zimmer",
-  description: "Explore the richness of Uruguayan wine guided by Gabi Zimmer, our site offers an extensive database of uruguayan wines complete with Gabi's professional tasting notes. Delve into our powerful search engine to find and learn about the wines that delight your taste buds. Join us and uncork the allure of Uruguayan wine!",
+  title: "Uruguay in Wines: A trip through history and terroir of Uruguayan wine",
+  description: "Uruguay in wines is an independent communication project, created by Gabi Zimmer. This site offers an extensive database of Uruguayan wines complete with Gabi`s professional tasting notes.",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
