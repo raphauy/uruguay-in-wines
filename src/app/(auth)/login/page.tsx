@@ -61,7 +61,9 @@ export default async function AuthenticationPage() {
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
               <p className="text-lg">
-                &ldquo;Explore the richness of Uruguayan wine guided by Gabi Zimmer, our site offers an extensive database of uruguayan wines complete with Gabi`s professional tasting notes. Delve into our powerful search engine to find and learn about the wines that delight your taste buds. Join us and uncork the allure of Uruguayan wine!&rdquo;
+                &ldquo;Uruguay in wines is an independent communication project, created by Gabi Zimmer, whose main goal is to spread de word about Uruguayan viticulture and wines through content and phygital educational experiences.
+
+                This site offers an extensive database of Uruguayan wines complete with Gabi`s professional tasting notes.&rdquo;
               </p>
               <footer className="text-sm">Sofia Davis</footer>
             </blockquote>

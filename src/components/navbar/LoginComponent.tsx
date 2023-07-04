@@ -20,7 +20,7 @@ export default async function LoginComponent() {
                         <p className="hidden sm:block text-muted-foreground">{user.email}</p>
                         {user.image && <Image className="w-12 border rounded-full border-spacing-1" src={user?.image} width={116} height={35} alt="logo" />}
                         {!user.image && <div 
-                        className="flex items-center justify-center w-12 h-12 text-2xl rounded-full text-gz-naranja bg-first-color hover:opacity-80">R</div>}
+                        className="flex items-center justify-center w-12 h-12 text-2xl rounded-full text-gz-naranja bg-first-color hover:opacity-80">{user.email?.substring(0,1).toUpperCase()}</div>}
                     </div>
                 </DropdownMenuProfile>
             </div>

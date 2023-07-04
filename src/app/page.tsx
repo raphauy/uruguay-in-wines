@@ -14,7 +14,7 @@ export default async function IndexPage() {
         Uruguay in Wines
       </h1>
       <h2 className="font-bold">
-        A trip through the history and terroir of Uruguayan wine
+        A trip through history and terroir of Uruguayan wine
       </h2>
 
       <div className="flex flex-col max-w-2xl gap-2 p-3 text-justify border rounded-md my-7">
