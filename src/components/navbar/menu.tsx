@@ -46,7 +46,7 @@ function adminMenu(path: string) {
             <li className={`flex items-center border-b-first-color hover:border-b-first-color hover:border-b-2 h-14 ${path.endsWith("wines") && "border-b-2"}`}>
                 <Link href="/admin/wines"><Button className="text-lg" variant="ghost">Wines</Button></Link>
             </li>
-            <li className={`flex items-center border-b-first-color ${path.endsWith("users") && "border-b-2"}`}>
+            <li className={`flex items-center border-b-first-color hover:border-b-first-color hover:border-b-2 h-14 ${path.endsWith("users") && "border-b-2"}`}>
                 <Link href="/admin/users"><Button className="text-lg" variant="ghost">Users</Button></Link>
             </li>
         </>

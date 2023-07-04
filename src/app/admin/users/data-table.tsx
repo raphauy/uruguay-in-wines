@@ -25,9 +25,9 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-
-import { DataTablePagination } from "./data-table-pagination"
+import { DataTablePagination } from "@/components/data-table/data-table-pagination"
 import { DataTableToolbar } from "./data-table-toolbar"
+
 
 
 interface DataTableProps<TData, TValue> {
@@ -135,7 +135,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} subject="Whatevers"/>
+      <DataTablePagination table={table} subject="User"/>
     </div>
   )
 }

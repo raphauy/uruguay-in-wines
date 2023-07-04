@@ -26,25 +26,23 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import { DataTablePagination } from "./data-table-pagination"
 import { DataTableToolbar } from "./data-table-toolbar"
+import { DataTablePagination } from "@/components/data-table/data-table-pagination"
 
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
+  columnsOff?: string[]
+  regions: string[]
+  grapes: string[]
+  vintages: string[]
 }
 
-export function DataTable<TData, TValue>({
-  columns,
-  data,
-}: DataTableProps<TData, TValue>) {
+export function DataTable<TData, TValue>({ columns, data, columnsOff, regions, grapes, vintages }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({})
-  const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
   const [sorting, setSorting] = React.useState<SortingState>([])
 
   const table = useReactTable({
@@ -69,15 +67,16 @@ export function DataTable<TData, TValue>({
     getFacetedUniqueValues: getFacetedUniqueValues(),
   })
   React.useEffect(() => {
-    table.setPageSize(20)  
-    table.getColumn("notes")?.toggleVisibility(false)
-    table.getColumn("winemaker")?.toggleVisibility(false)
+    columnsOff && columnsOff.forEach(colName => {
+      table.getColumn(colName)?.toggleVisibility(false)      
+    });
+    
   // eslint-disable-next-line react-hooks/exhaustive-deps  
   }, [])
 
   return (
     <div className="space-y-4 dark:text-white">
-      <DataTableToolbar table={table} />
+      <DataTableToolbar table={table} regions={regions} grapes={grapes} vintages={vintages}/>
       <div className="border rounded-md">
         <Table>
           <TableHeader>
@@ -128,7 +127,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} />
+      <DataTablePagination table={table} subject="Wine"/>
     </div>
   )
 }

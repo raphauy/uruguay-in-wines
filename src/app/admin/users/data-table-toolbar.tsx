@@ -5,9 +5,8 @@ import { ArrowUpCircle, CheckCircle2, Circle, HelpCircle, X, XCircle } from "luc
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { DataTableViewOptions } from "./data-table-view-options"
-
-import { DataTableFacetedFilter } from "./data-table-faceted-filter"
+import { DataTableFacetedFilter } from "@/components/data-table/data-table-faceted-filter"
+import { DataTableViewOptions } from "@/components/data-table/data-table-view-options"
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>

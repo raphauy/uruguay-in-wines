@@ -11,8 +11,8 @@ export default function Logo() {
   return (
     <Link href="/">
       <div className="flex flex-col items-center">
-        <p className="text-3xl font-bold tracking-tighter">Uruguay</p>
-        <p className="-mt-2 text-2xl font-medium tracking-wider text-first-color">In Wines</p>
+        <p className="text-3xl font-bold tracking-tighter text-first-color">Uruguay</p>
+        <p className="-mt-2 text-2xl font-medium tracking-wider text-gz-naranja">In Wines</p>
       </div>
     </Link>
   )

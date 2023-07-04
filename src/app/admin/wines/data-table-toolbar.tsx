@@ -1,55 +1,69 @@
 "use client"
 
 import { Table } from "@tanstack/react-table"
-import { ArrowUpCircle, CheckCircle2, Circle, HelpCircle, X, XCircle } from "lucide-react"
+import { X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { DataTableViewOptions } from "./data-table-view-options"
 
-import { DataTableFacetedFilter } from "./data-table-faceted-filter"
+import { DataTableFacetedFilter } from "@/components/data-table/data-table-faceted-filter"
+import { DataTableViewOptions } from "@/components/data-table/data-table-view-options"
 import { wineStyles } from "./add/wineForm"
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
+  regions: string[]
+  grapes: string[]
+  vintages: string[]
 }
 
-export function DataTableToolbar<TData>({
-  table,
-}: DataTableToolbarProps<TData>) {
+export function DataTableToolbar<TData>({ table, regions, grapes, vintages }: DataTableToolbarProps<TData>) {
   const isFiltered = table.getState().columnFilters.length > 0
 
   return (
     <div className="flex flex-col gap-1">
       <div className="grid w-full grid-cols-3 gap-1">
-        <Input className="max-w-xs" placeholder="Winery filter..."
+        <Input placeholder="Winery filter..."
             value={(table.getColumn("winery")?.getFilterValue() as string) ?? ""}
             onChange={(event) => table.getColumn("winery")?.setFilterValue(event.target.value)}                
         />
-        <Input className="max-w-xs" placeholder="Wine filter..."
+        <Input placeholder="Wine filter..."
             value={(table.getColumn("wine")?.getFilterValue() as string) ?? ""}
             onChange={(event) => table.getColumn("wine")?.setFilterValue(event.target.value)}                
         />
-        <Input className="max-w-xs" placeholder="Region filter..." 
-            value={(table.getColumn("region")?.getFilterValue() as string ?? "")}
-            onChange={(event) => table.getColumn("region")?.setFilterValue(event.target.value)}
-        />
-        <Input className="max-w-xs" placeholder="Vintage filter..." 
-            value={(table.getColumn("vintage")?.getFilterValue() as string ?? "")}
-            onChange={(event) => table.getColumn("vintage")?.setFilterValue(event.target.value)}
-        />
-        <Input className="max-w-xs" placeholder="Grapes filter..."
-            value={(table.getColumn("grapes")?.getFilterValue() as string) ?? ""}
-            onChange={(event) => table.getColumn("grapes")?.setFilterValue(event.target.value)}                
+        <Input placeholder="Tasting Notes filter..." 
+            value={(table.getColumn("notes")?.getFilterValue() as string ?? "")}
+            onChange={(event) => table.getColumn("notes")?.setFilterValue(event.target.value)}
         />
       </div>
 
-      <div className="flex justify-between w-full">
+      <div className="flex items-center justify-between w-full">
         {table.getColumn("style") && (
           <DataTableFacetedFilter
             column={table.getColumn("style")}
-            title="Wine Style"
+            title="Style"
             options={wineStyles}
+          />
+        )}
+        {table.getColumn("region") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("region")}
+            title="Region"
+            options={regions}
+          />
+        )}
+        {table.getColumn("grapes") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("grapes")}
+            title="Grapes"
+            options={grapes}
+          />
+        )}
+        {table.getColumn("vintage") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("vintage")}
+            title="Vintages"
+            options={vintages}
           />
         )}
         {isFiltered && (
@@ -64,6 +78,8 @@ export function DataTableToolbar<TData>({
         )}
         <DataTableViewOptions table={table}/>
       </div>
+
+
     </div>
   )
 }

@@ -19,8 +19,12 @@ import { useEffect, useState } from "react"
 import { toast } from "react-hot-toast"
 
 export const wineStyles= [
-  "Fresh and usefull",
-  "bold and structured"
+  "Sparkling",
+  "White",
+  "Orange",
+  "Rosé",
+  "Red",
+  "Fortified"
 ]
 
 const formSchema = z.object({
@@ -36,7 +40,7 @@ const formSchema = z.object({
     .min(2, { message: "Grapes must be at least 2 characters." }),
   style: z.string().optional(),
   notes: z.string().optional(),
-  price: z.number().optional(),
+  price: z.string().optional(),
   image: z.string().optional(),
 })
 
@@ -105,7 +109,7 @@ export function WineForm({ wine, processData }: Props) {
       <form onSubmit={form.handleSubmit(onSubmit)} className="p-4 space-y-8 bg-white border rounded-md">
         <FormField
           control={form.control}
-          name="winery"
+          name="winery"         
           render={({ field }) => (
             <FormItem>
               <FormLabel>Winery</FormLabel>
@@ -205,6 +209,19 @@ export function WineForm({ wine, processData }: Props) {
                   }
                 </SelectContent>
               </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="price"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Price</FormLabel>
+              <FormControl>
+                <Input placeholder="Average price" {...field} />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}

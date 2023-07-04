@@ -16,11 +16,16 @@ module.exports = {
     },
     extend: {
       colors: {
-        "first-color": "rgb(192 132 252)",
+        "first-color": "#0170BB",
         "tinta-natural": "#F6F4E3",
         "tinta-vino": "#DDBBC0",
         "tinta-amarillo": "#EAE559",
         "tinta-marron": "#AF8928",
+        "gz-amarillo":"#EAE559",
+        "gz-naranja":"#FF915E",
+        "gz-verde-claro":"#E7F0BC",
+        "gz-verde-oscuro":"#35472A",
+        "gz-azul":"#0170BB",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

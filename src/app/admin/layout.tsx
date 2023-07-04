@@ -19,10 +19,6 @@ export default async function AdminLayout({ children }: Props) {
   }
 
   return (
-    <>
-      <main className="flex flex-grow w-full">
-        <div className="flex justify-center flex-grow w-full">{children}</div>
-      </main>
-    </>
+    <div className="flex justify-center flex-grow w-full">{children}</div>
   )
 }

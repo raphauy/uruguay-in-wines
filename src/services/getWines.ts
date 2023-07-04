@@ -12,7 +12,37 @@ export default async function getWines() {
   return found;
 };
 
+export async function getGrapes() {
+  const wines = await prisma.wine.findMany({ select: { grapes: true } }); 
 
+  const all = wines.map(wine => wine.grapes);
+  
+  const uniques = Array.from(new Set(all));
+
+  return uniques;
+}
+
+export async function getRegions() {
+  const wines = await prisma.wine.findMany({ select: { region: true } }); 
+
+  const all = wines.map(wine => wine.region);
+  
+  const uniques = Array.from(new Set(all));
+
+  return uniques;
+}
+
+export async function getVintages() {
+  const wines = await prisma.wine.findMany({ select: { vintage: true } }); 
+
+  const all = wines.map(wine => wine.vintage);
+  
+  const uniques = Array.from(new Set(all));
+
+  return uniques;
+}
+
+  
 export async function getWine(id: string) {
 
   const found = await prisma.wine.findUnique({

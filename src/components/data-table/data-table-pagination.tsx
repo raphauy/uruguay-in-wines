@@ -17,19 +17,19 @@ import {
 
 interface DataTablePaginationProps<TData> {
   table: Table<TData>
+  subject: string
 }
 
-export function DataTablePagination<TData>({
-  table,
-}: DataTablePaginationProps<TData>) {
+export function DataTablePagination<TData>({ table, subject }: DataTablePaginationProps<TData>) {
+
   return (
     <div className="flex items-center justify-between px-2">
       <div className="flex-1 text-sm text-muted-foreground">
-        {table.getFilteredRowModel().rows.length} wine(s)
+        {table.getFilteredRowModel().rows.length} {subject}(s)
       </div>
       <div className="flex items-center space-x-6 lg:space-x-8">
         <div className="flex items-center space-x-2">
-          <p className="text-sm font-medium">Wines per page</p>
+          <p className="text-sm font-medium">{subject}s per page</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
             onValueChange={(value) => {

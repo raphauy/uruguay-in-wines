@@ -2,7 +2,7 @@
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "name" TEXT,
-    "email" TEXT,
+    "email" TEXT NOT NULL,
     "role" TEXT NOT NULL DEFAULT 'user',
     "emailVerified" TIMESTAMP(3),
     "image" TEXT,
@@ -50,13 +50,13 @@ CREATE TABLE "Wine" (
     "id" TEXT NOT NULL,
     "winery" TEXT NOT NULL,
     "wine" TEXT NOT NULL,
-    "winemaker" TEXT,
+    "winemaker" TEXT NOT NULL DEFAULT '',
     "region" TEXT NOT NULL,
     "vintage" TEXT NOT NULL,
     "grapes" TEXT NOT NULL,
-    "style" TEXT,
-    "notes" TEXT,
-    "price" DOUBLE PRECISION,
+    "style" TEXT NOT NULL DEFAULT '',
+    "notes" TEXT NOT NULL DEFAULT '',
+    "price" TEXT NOT NULL DEFAULT '',
     "image" TEXT DEFAULT 'https://res.cloudinary.com/dtm41dmrz/image/upload/v1688035104/wines/wine-placeholder.jpg',
 
     CONSTRAINT "Wine_pkey" PRIMARY KEY ("id")

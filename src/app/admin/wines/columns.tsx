@@ -1,18 +1,18 @@
 "use client"
 
-import { ColumnDef } from "@tanstack/react-table"
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
-import { ArrowUpDown, MoreHorizontal, Trash2 } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { ColumnDef } from "@tanstack/react-table"
+import { Edit, MoreHorizontal, Trash2 } from "lucide-react"
 import Link from "next/link"
-import { Edit } from "lucide-react"
+import { columns as userColumns } from '@/app/columns'
 
 export type Wine = {
   id: string
@@ -26,135 +26,26 @@ export type Wine = {
   notes: string | null
 }
 
-export const columns: ColumnDef<Wine>[] = [
-  {
-    accessorKey: "winery",
-    header: ({ column }) => {
-        return (
-          <Button variant="ghost" className="pl-0 dark:text-white"
-            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-            Winery
-            <ArrowUpDown className="w-4 h-4 ml-1" />
-          </Button>
-        )
-    },
-  },
-  {
-    accessorKey: "wine",
-    header: ({ column }) => {
-      return (
-        <Button variant="ghost" className="pl-0 dark:text-white"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-          Wine
-          <ArrowUpDown className="w-4 h-4 ml-1" />
-        </Button>
-      )
-    },
-  },
-  {
-    accessorKey: "winemaker",
-    header: ({ column }) => {
-      return (
-        <Button variant="ghost" className="pl-0 dark:text-white"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-          Winemaker
-          <ArrowUpDown className="w-4 h-4 ml-1" />
-        </Button>
-      )
-    },
-  },
-  {
-    accessorKey: "region",
-    header: ({ column }) => {
-      return (
-        <Button variant="ghost" className="pl-0 dark:text-white"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-          Region
-          <ArrowUpDown className="w-4 h-4 ml-1" />
-        </Button>
-      )
-    },
-  },
-  {
-    accessorKey: "vintage",
-    header: ({ column }) => {
-      return (
-        <Button variant="ghost" className="pl-0 dark:text-white"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-          Vintage
-          <ArrowUpDown className="w-4 h-4 ml-1" />
-        </Button>
-      )
-    },
-  },
-  {
-    accessorKey: "grapes",
-    header: ({ column }) => {
-      return (
-        <Button variant="ghost" className="pl-0 dark:text-white"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-          Grapes
-          <ArrowUpDown className="w-4 h-4 ml-1" />
-        </Button>
-      )
-    },
-  },
-  {
-    accessorKey: "style",
-    header: ({ column }) => {
-      return (
-        <Button variant="ghost" className="pl-0 dark:text-white"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-          Style
-          <ArrowUpDown className="w-4 h-4 ml-1" />
-        </Button>
-      )
-    },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
-    }
-  },
-  {
-    accessorKey: "notes",
-    header: ({ column }) => {
-      return (
-        <Button variant="ghost" className="pl-0 dark:text-white"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-          Notas
-          <ArrowUpDown className="w-4 h-4 ml-1" />
-        </Button>
-      )
-    },
-  },
+
+const actionColumns: ColumnDef<Wine>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const wine = row.original     
+      const data= row.original     
  
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="w-8 h-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="w-4 h-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-                <Link href={`/admin/wines/edit?wineId=${wine.id}`} className="flex items-center">
-                    <Edit size={22} className="pr-2 hover:cursor-pointer text-sky-400"/>Editar
-                </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-                <Link href={`/admin/wines/delete?wineId=${wine.id}`} className="flex items-center">
-                  <Trash2 size={22} className="text-red-400 hover:cursor-pointer"/>Eliminar
-                </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="flex items-center justify-end gap-2">
+          <Link href={`/admin/wines/edit?wineId=${data.id}`} className="flex items-center">
+            <Edit size={30} className="pr-2 hover:cursor-pointer text-sky-400"/>
+          </Link>
+          <Link href={`/admin/wines/delete?wineId=${data.id}`} className="flex items-center">
+            <Trash2 className="text-red-400 hover:cursor-pointer"/>
+          </Link>
+        </div>
+
       )
     },
   },
 ]
+
+export const columns= userColumns.concat(actionColumns)

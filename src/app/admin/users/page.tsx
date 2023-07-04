@@ -4,7 +4,7 @@ import { columns } from "./columns"
 import { PlusCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import getUsers from "@/services/userService"
-import { DataTable } from "@/components/data-table/data-table"
+import { DataTable } from "./data-table"
  
 export default async function WinesPage() {
   

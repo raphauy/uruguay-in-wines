@@ -1,26 +1,42 @@
-import getWines from "@/services/getWines";
-import { columns } from "./admin/wines/columns";
+import getWines, { getGrapes, getRegions, getVintages } from "@/services/getWines";
 import { DataTable } from "./admin/wines/data-table";
+import { columns } from "./columns";
 
 export default async function IndexPage() {
   const wines= await getWines()
+  const regions= await getRegions()
+  const grapes= await getGrapes()
+  const vintages= await getVintages()
 
   return (
-    <section className="grid items-center justify-center w-full gap-6 pt-6 pb-8 ">
-      
-      <div className="flex flex-col items-center w-full gap-7">
-        <h1 className="text-3xl font-extrabold leading-tight tracking-tighter text-center md:text-4xl">
-          Uruguay in Wines
-        </h1>
-        <p className="max-w-2xl text-lg text-justify">
-          Explore the richness of Uruguayan wine guided by Gabi Zimmer, our site offers an extensive database of uruguayan wines complete with Gabi`s professional tasting notes. Delve into our powerful search engine to find and learn about the wines that delight your taste buds. Join us and uncork the allure of Uruguayan wine!
-        </p>
-      </div>
-      
-      <div className="container p-3 py-10 mx-auto border rounded-md">
-        <DataTable columns={columns} data={wines} />      
-      </div>
+    <div className="flex flex-col items-center w-full text-lg">
+      <h1 className="mt-5 text-3xl font-extrabold leading-tight tracking-tighter text-center md:text-4xl">
+        Uruguay in Wines
+      </h1>
+      <h2>
+        A trip through the history and terroir of Uruguayan wine
+      </h2>
 
-    </section>
-  )
+      <div className="flex flex-col max-w-2xl gap-2 text-justify my-7">
+
+        <p>
+          Uruguay in wines is an independent communication project, created by Gabi Zimmer, whose main goal is to spread de word about Uruguayan viticulture and wines through content and phygital educational experiences.
+        </p>
+
+        <p>
+          This site offers an extensive database of Uruguayan wines complete with Gabi`s professional tasting notes.
+        </p>
+
+      </div>
+      
+      <div className="container p-3 mx-auto border rounded-md">
+        <DataTable columns={columns} data={wines} columnsOff={["winemaker", "price"]} 
+          regions={regions} 
+          grapes={grapes}
+          vintages={vintages}
+        />
+      </div>
+    </div>
+  
+)
 }

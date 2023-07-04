@@ -39,8 +39,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 
                 <div className="flex flex-col items-center flex-1 w-full dark:text-white">
                   {children}                
-                  <Toaster />
-                </div>
+                </div>            
+                <Toaster />
               </div>            
               <TailwindIndicator />
             </ThemeProvider>

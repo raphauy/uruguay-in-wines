@@ -1,14 +1,17 @@
 import Link from "next/link"
 
-import { columns } from "./columns"
-import getWines from "@/services/getWines"
+import getWines, { getGrapes, getRegions, getVintages } from "@/services/getWines"
 import { PlusCircle } from "lucide-react"
-import { DataTable } from "./data-table"
 import { Button } from "@/components/ui/button"
+import { DataTable } from "./data-table"
+import { columns } from "./columns"
  
 export default async function WinesPage() {
   
   const wines= await getWines()
+  const regions= await getRegions()
+  const grapes= await getGrapes()
+  const vintages= await getVintages()
 
   return (
     <div className="w-full">      
@@ -21,7 +24,11 @@ export default async function WinesPage() {
       </div>
 
       <div className="container p-3 py-10 mx-auto border rounded-md">
-        <DataTable columns={columns} data={wines} />      
+        <DataTable columns={columns} data={wines} columnsOff={["winemaker", "price"]} 
+          regions={regions} 
+          grapes={grapes}
+          vintages={vintages}
+        />
       </div>
     </div>
 )

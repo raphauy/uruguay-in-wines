@@ -59,12 +59,12 @@ model Wine {
   id            String    @id @default(cuid())
   winery        String
   wine          String
-  winemaker     String?
+  winemaker     String    @default("")
   region        String
   vintage       String
   grapes        String
-  style         String?
-  notes         String?   @db.Text
-  price         Float?
+  style         String    @default("")
+  notes         String    @db.Text @default("")
+  price         String    @default("")
   image         String?   @default("https://res.cloudinary.com/dtm41dmrz/image/upload/v1688035104/wines/wine-placeholder.jpg")
 }
