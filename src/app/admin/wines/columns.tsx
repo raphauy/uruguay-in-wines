@@ -12,20 +12,7 @@ import {
 import { ColumnDef } from "@tanstack/react-table"
 import { Edit, MoreHorizontal, Trash2 } from "lucide-react"
 import Link from "next/link"
-import { columns as userColumns } from '@/app/columns'
-
-export type Wine = {
-  id: string
-  winery: string
-  wine: string
-  winemaker: string | null
-  region: string
-  vintage: string
-  grapes: string
-  style: string | null
-  notes: string | null
-}
-
+import { Wine, columns as userColumns } from '@/app/columns'
 
 const actionColumns: ColumnDef<Wine>[] = [
   {

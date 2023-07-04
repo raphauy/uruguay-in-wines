@@ -160,7 +160,7 @@ export const columns: ColumnDef<Wine>[] = [
         <Link href={`/admin/wines/view?wineId=${wine.id}`} className="flex items-center">
             <Eye />
         </Link>
-)
+      )
     },
   },
 
