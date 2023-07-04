@@ -10,6 +10,8 @@ import { fontSans } from '@/utils/front/fonts'
 import { cn } from "@/lib/utils"
 import AuthContext from '@/utils/front/AuthContext'
 import { Navbar } from '../components/navbar/navbar'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 
 export const metadata: Metadata = {
@@ -39,7 +41,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 
                 <div className="flex flex-col items-center flex-1 w-full dark:text-white">
                   {children}                
-                </div>            
+                </div>
+
+                <div className="flex justify-center">
+                  <Link href="https://gabizimmer.com">
+                    <Button variant="link" className='text-lg text-gz-verde-oscuro'>gabizimmer.com</Button>
+                  </Link>
+                </div>
                 <Toaster />
               </div>            
               <TailwindIndicator />

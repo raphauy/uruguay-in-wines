@@ -10,14 +10,14 @@ export default async function IndexPage() {
 
   return (
     <div className="flex flex-col items-center w-full text-lg">
-      <h1 className="mt-5 text-3xl font-extrabold leading-tight tracking-tighter text-center md:text-4xl">
+      <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tighter text-center md:text-4xl">
         Uruguay in Wines
       </h1>
-      <h2>
+      <h2 className="font-bold">
         A trip through the history and terroir of Uruguayan wine
       </h2>
 
-      <div className="flex flex-col max-w-2xl gap-2 text-justify my-7">
+      <div className="flex flex-col max-w-2xl gap-2 p-3 text-justify border rounded-md my-7">
 
         <p>
           Uruguay in wines is an independent communication project, created by Gabi Zimmer, whose main goal is to spread de word about Uruguayan viticulture and wines through content and phygital educational experiences.
