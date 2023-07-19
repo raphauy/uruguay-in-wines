@@ -1,6 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { createWine } from "@/services/getWines";
-import { User, Wine } from "@prisma/client";
+import { User } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 import { UserForm, UserFormValues } from "./usersForm";
 import { createUser } from "@/services/userService";

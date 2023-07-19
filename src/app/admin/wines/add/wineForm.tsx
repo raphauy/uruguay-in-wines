@@ -16,7 +16,7 @@ import { Wine } from "@prisma/client"
 import { CldUploadButton } from 'next-cloudinary'
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import { toast } from "react-hot-toast"
+import { toast } from "@/components/ui/use-toast"
 
 export const wineStyles= [
   "Sparkling",
@@ -73,8 +73,14 @@ export function WineForm({ wine, processData }: Props) {
     if (wine)
       message= "Vino editado 🏁"
       
-    toast.success(message, { duration: 4000 })
-
+      toast({
+        description: (
+          <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+            <p className="text-xl text-white">{message}</p>
+          </pre>
+        ),
+      })
+  
     fresh && router.push(`/admin/wines?refresh=${new Date().getMilliseconds()}`)
   }
 

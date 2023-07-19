@@ -8,15 +8,12 @@ import { UserForm, UserFormValues } from "../add/usersForm";
 export const revalidate= 0
 
 interface Props{
-    params: {
-        slug: string
-    },
     searchParams: {
         userId: string
     },
   }  
 
-export default async function AddWinePage({ params, searchParams }: Props) {
+export default async function AddWinePage({ searchParams }: Props) {
     
     const userId= searchParams.userId
     const user= await getUser(userId)

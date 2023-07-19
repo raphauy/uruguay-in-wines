@@ -151,17 +151,17 @@ export const columns: ColumnDef<Wine>[] = [
       )
     },
   },
-  {
-    id: "open",
-    cell: ({ row }) => {
-      const wine = row.original     
+  // {
+  //   id: "open",
+  //   cell: ({ row }) => {
+  //     const wine = row.original     
 
-      return (
-        <Link href={`/admin/wines/view?wineId=${wine.id}`} className="flex items-center">
-            <Eye />
-        </Link>
-      )
-    },
-  },
+  //     return (
+  //       <Link href={`/admin/wines/view?wineId=${wine.id}`} className="flex items-center">
+  //           <Eye />
+  //       </Link>
+  //     )
+  //   },
+  // },
 
 ]
