@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   uruguay-in-wines:
+    container_name: uruguay-in-wines
     image: raphauy/uruguay-in-wines:latest
     restart: always
     env_file:
